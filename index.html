@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<title>jogwheel - Take control of your CSS keyframe animations</title>
+		<link rel="stylesheet" href="./static/index.css" />
+		<meta property="og:title" content="jogwheel" />
+		<meta property="og:title" content="Take control of your CSS keyframe animations" />
+		<meta property="og:image" content="./static/jogwheel.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/svg+xml" href="./static/jogwheel.svg" />
+		<link rel="icon" type="image/png" href="./static/jogwheel.png" />
+	</head>
+	<body>
+		<div class="jogwheel-teaser">
+			<a href="https://github.com/marionebl/jogwheel#-jogwheel">
+				Fork me on Github
+			</a>
+			<nav class="jogwheel-main-navigation">
+				<ul class="jogwheel-main-navigation-list">
+					<li class="jogwheel-item"><a href=".">Home</a></li>
+<li class="jogwheel-item"><a href="./contributing.html">Contributing</a></li>
+<li class="jogwheel-item"><a href="./documentation/api.html">Api</a></li>
+<li class="jogwheel-item"><a href="./documentation/roadmap.html">Roadmap</a></li>
+<li class="jogwheel-item"><a href="./examples/cdn.html">Cdn</a></li>
+<li class="jogwheel-item"><a href="./examples/index.html">Examples</a></li>
+<li class="jogwheel-item"><a href="./license.html">License</a></li>
+				</ul>
+			</nav>
+		</div>
+		<header class="jogwheel-header">
+	<blockquote class="jogwheel-claim">Take control of your CSS keyframe animations</blockquote>
+	<div class="jogwheel-logo" align="center">
+		<img width="200" src="https://cdn.rawgit.com/marionebl/jogwheel/master/source/documentation/static/jogwheel.svg" />
+	</div>
+	<h1 class="jogwheel-name" align="center"> jogwheel</h1>
+	<nav class="jogwheel-navigation">
+		<div align="center" class="jogwheel-navigation-list"><b><a href="#about">About</a></b> | <b><a href="#install">Install</a></b> | <b><a href="#usage">Usage</a></b> | <b><a href="#browser-support">Browser Support</a></b> | <b><a href="./documentation/api.html">API Documentation</a></b> | <b><a href="./examples/index.html">Examples</a></b> | <b><a href="./contributing.html">Contributing</a></b></div>
+	</nav>
+</header>
+<br />
+<blockquote>
+<p>Health</p>
+</blockquote>
+<p><a href="https://travis-ci.org/marionebl/jogwheel"><img src="https://img.shields.io/travis/marionebl/jogwheel/master.svg?style=flat-square" alt="ci"></a>
+<a href="https://coveralls.io/r/marionebl/jogwheel"><img src="https://img.shields.io/coveralls/marionebl/jogwheel.svg?style=flat-square" alt="coverage"></a> <a href="https://codeclimate.com/github/marionebl/jogwheel"><img src="https://img.shields.io/codeclimate/github/marionebl/jogwheel.svg?style=flat-square" alt="climate"></a></p>
+<blockquote>
+<p>Availability</p>
+</blockquote>
+<p><a href="https://www.npmjs.org/package/jogwheel"><img src="https://img.shields.io/npm/v/jogwheel.svg?style=flat-square" alt="npm"></a> <a href="https://www.brcdn.org/?module=jogwheel"><img src="https://img.shields.io/badge/cdn-v1.3.0-5ec792.svg?style=flat-square" alt="brcdn"></a> <a href="https://www.npmjs.org/package/jogwheel"><img src="http://img.shields.io/npm/dm/jogwheel.svg?style=flat-square" alt="npm-dl"></a></p>
+<blockquote>
+<p>Activity</p>
+</blockquote>
+<p><a href="http://issuestats.com/github/marionebl/jogwheel"><img src="http://issuestats.com/github/marionebl/jogwheel/badge/pr?style=flat-square" alt="pr"></a> <a href="undefined"><img src="http://issuestats.com/github/marionebl/jogwheel/badge/issue?style=flat-square" alt="issue"></a></p>
+<blockquote>
+<p>Conventions and standards</p>
+</blockquote>
+<p><a href="https://github.com/greenkeeperio/greenkeeper"><img src="https://img.shields.io/badge/tracks%20with-greenkeeper-5ec792.svg?style=flat-square" alt="dependency-manager"></a> <a href="https://github.com/semantic-release/semantic-release"><img src="https://img.shields.io/badge/releases%20with-semantic--release-5ec792.svg?style=flat-square" alt="release-manager"></a> <a href="https://github.com/babel/babel"><img src="https://img.shields.io/badge/babel%20stage-0-5ec792.svg?style=flat-square" alt="ecma"></a> <a href="https://github.com/sindresorhus/xo"><img src="https://img.shields.io/badge/code%20style-xo-5ec792.svg?style=flat-square" alt="codestyle"></a> <a href="./license.html"><img src="https://img.shields.io/badge/license-MIT-5ec792.svg?style=flat-square" alt="license"></a> <a href="http://commitizen.github.io/cz-cli/"><img src="https://img.shields.io/badge/commitizen-friendly-5ec792.svg?style=flat-square" alt="commitizen"></a></p>
+<h2 id="about">About</h2>
+<p>jogwheel gives you the power to take full control of your CSS keyframe animations via JavaScript.</p>
+<ul>
+<li><strong>separation of concerns</strong>: Declare animations with CSS</li>
+<li><strong>full control</strong>: Play, pause and scrub your animations</li>
+<li><strong>animation sequences</strong>: No brittle fiddling with animationEnd</li>
+<li>world peace</li>
+</ul>
+<h2 id="install">Install</h2>
+<p><a href="https://www.npmjs.org/package/jogwheel">jogwheel</a> is available on npm.</p>
+<pre><code>npm install --save jogwheel
+</code></pre>
+<h2 id="usage">Usage</h2>
+<p><strong>:warning: Please note</strong> jogwheel assumes <code>Element.prototype.animate</code> is defined and returns a valid WebAnimationPlayer instance.
+To achieve this you will have to include a WebAnimation polyfill, <a href="https://github.com/web-animations/web-animations-js">web-animations-js</a> by Google is recommended.</p>
+<p>The usage examples show recommended ways to include the polyfill.</p>
+<h3 id="commonjs">CommonJS</h3>
+<p>jogwheel exposes its API as CommonJS module. Using the export and bundling your JavaScript with browserify, webpack or rollup is <strong>recommended</strong>.</p>
+<pre><code class="hljs language-js language-js"><span class="hljs-comment">// import the polyfill</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">'web-animations-js'</span>;
+
+<span class="hljs-comment">// import jogwheel</span>
+<span class="hljs-keyword">import</span> jogwheel <span class="hljs-keyword">from</span> <span class="hljs-string">'jogwheel'</span>;
+
+<span class="hljs-comment">// Select target element</span>
+<span class="hljs-keyword">const</span> element = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'[data-animated]'</span>);
+
+<span class="hljs-comment">// Construct jogwheel instance from element</span>
+<span class="hljs-keyword">const</span> player = jogwheel.create(element);
+
+<span class="hljs-comment">// Jump halfway into the animation</span>
+player.seek(<span class="hljs-number">0.5</span>);</code></pre>
+<h3 id="cdn">CDN</h3>
+<p>jogwheel provides prebundled downloads via <a href="https://www.brcdn.org/?module=jogwheel">brcdn.org</a>.
+Either embed or download the standalone bundle. Given you do not use a module system the standalone build will pollute <code>window.jogwheel</code>. This usage is viable but <strong>not recommended</strong>.</p>
+<ul>
+<li>Development <a href="https://www.brcdn.org/jogwheel/v1.3.0/?standalone=jogwheel&amp;uglify=false">v1.3.0</a></li>
+<li>Production <a href="https://www.brcdn.org/jogwheel/1.3.0/?standalone=jogwheel&amp;uglify=true">v1.3.0</a></li>
+<li>Development <a href="https://www.brcdn.org/jogwheel/latest/?standalone=jogwheel&amp;uglify=false">latest</a></li>
+<li>Production <a href="https://www.brcdn.org/jogwheel/latest/?standalone=jogwheel&amp;uglify=true">latest</a></li>
+</ul>
+<p><strong>Fast track example</strong></p>
+<pre><code>npm install --g opn-cli &amp;&amp; curl https://marionebl.github.io/examples/cdn.html &gt; jogwheel-example.html &amp;&amp; opn jogwheel-example.html
+</code></pre>
+<p><strong>All the code</strong></p>
+<pre><code class="hljs language-html language-html"><span class="hljs-doctype">&lt;!doctype html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">title</span>&gt;</span>CDN example<span class="hljs-tag">&lt;/<span class="hljs-title">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">style</span>&gt;</span><span class="css">
+    <span class="hljs-at_rule">@<span class="hljs-keyword">keyframes</span> bounce </span>{
+      0%, 100% <span class="hljs-rules">{
+        <span class="hljs-rule"><span class="hljs-attribute">transform</span>:<span class="hljs-value"> none</span></span>;
+      }</span>
+      50% <span class="hljs-rules">{
+        <span class="hljs-rule"><span class="hljs-attribute">transform</span>:<span class="hljs-value"> <span class="hljs-function">translateY</span>(<span class="hljs-number">100%</span>)</span></span>;
+      }</span>
+    }
+
+    <span class="hljs-at_rule">@<span class="hljs-keyword">-webkit-keyframes</span> bounce </span>{
+      0%, 100% <span class="hljs-rules">{
+        <span class="hljs-rule"><span class="hljs-attribute">-webkit-transform</span>:<span class="hljs-value"> none</span></span>;
+      }</span>
+      50% <span class="hljs-rules">{
+        <span class="hljs-rule"><span class="hljs-attribute">-webkit-transform</span>:<span class="hljs-value"> <span class="hljs-function">translateY</span>(<span class="hljs-number">100%</span>)</span></span>;
+      }</span>
+    }
+
+    <span class="hljs-attr_selector">[data-animated]</span> <span class="hljs-rules">{
+      <span class="hljs-rule"><span class="hljs-attribute">animation</span>:<span class="hljs-value"> bounce <span class="hljs-number">10s</span></span></span>;
+      <span class="hljs-rule"><span class="hljs-attribute">animation-fill-mode</span>:<span class="hljs-value"> both</span></span>;
+      <span class="hljs-rule"><span class="hljs-attribute">animation-play-state</span>:<span class="hljs-value"> paused</span></span>;
+      <span class="hljs-rule"><span class="hljs-attribute">animation-iteration-count</span>:<span class="hljs-value"> infinite</span></span>;
+      <span class="hljs-rule"><span class="hljs-attribute">display</span>:<span class="hljs-value"> inline-block</span></span>;
+      <span class="hljs-rule"><span class="hljs-attribute">height</span>:<span class="hljs-value"> <span class="hljs-number">100px</span></span></span>;
+      <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">100px</span></span></span>;
+      <span class="hljs-rule"><span class="hljs-attribute">background</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#333</span></span></span>;
+      <span class="hljs-rule"><span class="hljs-attribute">border-radius</span>:<span class="hljs-value"> <span class="hljs-number">50%</span></span></span>;
+      <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#fff</span></span></span>;
+      <span class="hljs-rule"><span class="hljs-attribute">font-family</span>:<span class="hljs-value"> sans-serif</span></span>;
+      <span class="hljs-rule"><span class="hljs-attribute">line-height</span>:<span class="hljs-value"> <span class="hljs-number">100px</span></span></span>;
+      <span class="hljs-rule"><span class="hljs-attribute">text-align</span>:<span class="hljs-value"> center</span></span>;
+    }</span>
+    <span class="hljs-attr_selector">[data-animated]</span><span class="hljs-pseudo">:nth-child(2)</span> <span class="hljs-rules">{
+      <span class="hljs-rule"><span class="hljs-attribute">animation-delay</span>:<span class="hljs-value"> <span class="hljs-number">2.5s</span></span></span>;
+    }</span>
+    <span class="hljs-attr_selector">[data-animated]</span><span class="hljs-pseudo">:nth-child(3)</span> <span class="hljs-rules">{
+      <span class="hljs-rule"><span class="hljs-attribute">animation-delay</span>:<span class="hljs-value"> <span class="hljs-number">5s</span></span></span>;
+    }</span>
+  </span><span class="hljs-tag">&lt;/<span class="hljs-title">style</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">data-animated</span>&gt;</span>Paused 0.5<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">data-animated</span>&gt;</span>Paused 0.5<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">data-animated</span>&gt;</span>Paused 0.5<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"https://www.brcdn.org/web-animations-js/latest/?standalone=web-animations-js&amp;uglify=true"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"https://www.brcdn.org/jogwheel/latest/?standalone=jogwheel&amp;uglify=true"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript">
+      <span class="hljs-keyword">var</span> elements = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'[data-animated]'</span>);
+      <span class="hljs-keyword">var</span> player = jogwheel.create(elements);
+      player.seek(<span class="hljs-number">0.5</span>);
+
+      setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        player.play();
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; elements.length; i += <span class="hljs-number">1</span>) {
+          elements[i].innerText = <span class="hljs-string">'Playing'</span>;
+        }
+      }, <span class="hljs-number">5000</span>);
+    </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></code></pre>
+<hr>
+<p>See <a href="./documentation/api.html">API Documentation</a> for details and <a href="./examples/index.html">examples</a> for more use cases.</p>
+<h2 id="browser-support">Browser support</h2>
+<p>jogwheel performs cross browser testing with SauceLabs</p>
+<p><a href="https://saucelabs.com/u/jogwheel-unit"><img src="https://saucelabs.com/browser-matrix/jogwheel-unit.svg" alt="Browser Support"></a></p>
+<h2 id="limitations">Limitations</h2>
+<p>Depending on the WebAnimations implementation you choose there are some limitations for properties usable with jogwheel.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Feature</th>
+<th align="center">Test</th>
+<th align="center">Issue</th>
+<th align="center">Blink</th>
+<th align="center">Gecko</th>
+<th align="center"><code>web-animations-js 2.1.4</code></th>
+<th align="center"><code>web-animations-next 2.1.4</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>animation-timing-function</code></td>
+<td align="center"><a href="http://codepen.io/marionebl/pen/RrbzOO">Link</a></td>
+<td align="center">#161</td>
+<td align="center">:warning:</td>
+<td align="center">:warning:</td>
+<td align="center">:warning:</td>
+<td align="center">:warning:</td>
+</tr>
+<tr>
+<td align="left"><code>filter</code></td>
+<td align="center"><a href="http://codepen.io/marionebl/pen/RrbzOO">Link</a></td>
+<td align="center">#162</td>
+<td align="center">:warning:</td>
+<td align="center">:warning:</td>
+<td align="center">:warning:</td>
+<td align="center">:warning:</td>
+</tr>
+</tbody>
+</table>
+<h2 id="development">Development</h2>
+<p>You dig jogwheel and want to submit a pull request? Awesome!
+Be sure to read the <a href="./contributing.html">contribution guide</a> and you should be good to go.
+Here are some notes to get you coding real quick.</p>
+<p>Fetch, install and start the default watch task</p>
+<pre><code>git clone https://github.com/marionebl/jogwheel.git
+cd jogwheel
+npm install
+npm start
+</code></pre>
+<p>This will watch all files in <code>source</code> and start the appropriate tasks when changes are detected.</p>
+<h2 id="roadmap">Roadmap</h2>
+<p>jogwheel is up to a lot of good. This includes but is not limited to</p>
+<ul>
+<li>super-awesome cross-browser tests</li>
+<li>unit-tested documentation code examples, because rust isn&apos;t the only language that can do cool dev convenience stuff</li>
+<li>an interactive playground and animation editor</li>
+<li>a plug-an-play react integration component</li>
+</ul>
+<hr>
+<p>See <a href="./documentation/roadmap.html">Roadmap</a> for details.</p>
+<hr>
+<p>jogwheel <code>v1.3.0</code> is built by Mario Nebl and <a href="./documentation/contributors.html">contributors</a> with :heart:
+and released under the <a href="./license.html">MIT License</a>.</p>
+
+		<aside class="jogwheel-archive-teaser">
+			Looking for older versions? Search our <a href="./archives/index.html">archives</a>.
+		</aside>
+		<script src="./static/index.js"></script>
+	</body>
+</html>
